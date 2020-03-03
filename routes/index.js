@@ -4,12 +4,23 @@ var router = express.Router();
 var initializeTrainerRoutes = require('../controllers/trainers.js');
 var pokemon = require('../api/pokemon');
 
+let mon;
+let allmon = [];
 
 /* GET home page. */
 router.get('/', function(req, res) {
   const { user } = req;
-  return res.render('pokedex/index', { user });
+  for (let i = 1; i <= 5; i ++) {
+    grabPokemon(i);
+  }
+  console.log(allmon)
+  return res.render('pokedex/index', { user, allmon });
 });
+
+async function grabPokemon(x) {
+  let p = await pokemon.getPokemon('' + x);
+  allmon.push(p)
+}
 
 // Stuff below added for google oauth
 
@@ -42,9 +53,9 @@ router.get('/logout', function(req, res){
 
 router.get('/search', async function(req, res) {
   const searchedMon = req.query.pokesearch;
-  const mon = await pokemon.getPokemon(''+ searchedMon);
+  mon = await pokemon.getPokemon(''+ searchedMon);
   console.log(mon);
-  res.redirect('/');
+  res.render('pokedex/showmon', { mon });
 });
 
 

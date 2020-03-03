@@ -6,3 +6,9 @@ body {
 a {
   color: #00B7FF;
 }
+
+#pokemon-screen {
+  display: block;
+  text-align: center;
+  margin-top: 0;
+}

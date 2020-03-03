@@ -7,8 +7,11 @@ a {
   color: #00B7FF;
 }
 
-#pokemon-screen {
+.pokemon-screen {
   display: block;
   text-align: center;
-  margin-top: 0;
+}
+
+#pokedex-full{
+  text-align: center;
 }

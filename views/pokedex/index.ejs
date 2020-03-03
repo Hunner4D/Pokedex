@@ -38,9 +38,12 @@
     </div>
   </form>
 
-  <div id="pokedex-screen">
+  <div id="pokedex-full">
     <% for (let i = 0; i < allmon.length; i++) { %>
-      <h6><%= allmon[i].name %></h6>
+
+      <img src="<%= allmon[i].sprites.front_default %>" alt="Pokemon Photo" height="200" width="200">
+      <a class="pokemon-screen" href="/search?pokesearch=<%= allmon[i].name %>"><%= allmon[i].name %></a>
+
     <% } %>
   </div>
 

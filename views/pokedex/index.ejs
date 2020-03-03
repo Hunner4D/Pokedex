@@ -4,6 +4,8 @@
 <head>
   <title>Pokedex Hunter</title>
   <!-- Google Icon Fonts used by Materialize -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- Materialize CSS Framework -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -33,18 +35,19 @@
 
   <form action="/search" method="GET">
     <div style="text-align: center;">
-      <input type="text" name="pokesearch" autocomplete="off" placeholder="Search for a Pokemon" style="text-transform: lowercase;">
+      <input type="text" name="pokesearch" autocomplete="off" placeholder="Search for a Pokemon"
+        style="text-transform: lowercase;">
       <button class="btn btn-success" style="margin: 0 auto;" type="submit">Go!</button>
     </div>
   </form>
 
   <div id="pokedex-full">
-    <% for (let i = 0; i < allmon.length; i++) { %>
-
-      <img src="<%= allmon[i].sprites.front_default %>" alt="Pokemon Photo" height="200" width="200">
-      <a class="pokemon-screen" href="/search?pokesearch=<%= allmon[i].name %>"><%= allmon[i].name %></a>
-
-    <% } %>
+      <% for (let i = 0; i < allmon.length; i++) { %>
+      <div style="width: 33%;">
+        <img src="<%= allmon[i].sprites.front_default %>" alt="Pokemon Photo" height="200px" width="200px">
+        <a class="pokemon-screen" href="/search?pokesearch=<%= allmon[i].name %>"><%= allmon[i].name %></a>
+      </div>
+      <% } %>
   </div>
 
 </body>

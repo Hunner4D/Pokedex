@@ -13,5 +13,7 @@ a {
 }
 
 #pokedex-full{
+  display: flex;
+  flex-wrap: wrap;
   text-align: center;
 }

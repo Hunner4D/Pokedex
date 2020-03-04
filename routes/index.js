@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
   const promises = [];
   let rn = Math.floor((Math.random() * 801) + 1);
   for (let i = 1; i <= 151; i ++) {
-    promises.push(pokemon.getPokemon(i));
+    promises.push(pokemon.getPokemon('pokemon/' + i));
   }
   Promise.all(promises).then(results => {
     allmon = results;
@@ -45,9 +45,10 @@ router.get('/logout', function(req, res){
 
 router.get('/search', async function(req, res) {
   const searchedMon = req.query.pokesearch;
-  mon = await pokemon.getPokemon(''+ searchedMon);
+  mon = await pokemon.getPokemon('pokemon/'+ searchedMon);
   console.log(mon);
-  res.render('pokedex/showmon', { mon });
+  desc = await pokemon.getPokemon('pokemon-species/'+ searchedMon)
+  res.render('pokedex/showmon', { mon, desc });
 });
 
 

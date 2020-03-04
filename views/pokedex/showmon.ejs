@@ -29,14 +29,15 @@
 
   <form action="/search" method="GET">
     <div style="text-align: center;">
-      <input type="text" name="pokesearch" autocomplete="off" placeholder="Search for a Pokemon" style="text-transform: lowercase;">
+      <input type="text" name="pokesearch" autocomplete="off" placeholder="Search for a Pokemon"
+        style="text-transform: lowercase;">
       <button class="btn btn-success" style="margin: 0 auto;" type="submit">Go!</button>
     </div>
   </form>
 
   <div class="pokemon-screen-text">
-      <h2 style="margin-bottom: 0;">#<%= mon.id %>: <%= mon.name %></h1>
-    <img src="<%= mon.sprites.front_default %>" alt="Pokemon Photo" height="300" width="300"> 
+    <h2 style="margin-bottom: 0;">#<%= mon.id %>: <%= mon.name %></h1>
+      <img src="<%= mon.sprites.front_default %>" alt="Pokemon Photo" height="300" width="300">
   </div>
 
   <div class="pokedex-full">
@@ -44,6 +45,17 @@
     <a href="/search?pokesearch=<%= mon.id + 1 %>" style="width: 50%;" class="pokemon-screen-text">Next Pokemon</a>
   </div>
 
+  <table>
+    <tr>
+      <th style="text-align: center;" style="padding: 0;">
+      <% for (let i = 0; i < mon.types.length; i++) {  %>
+        <p>Type: <%= mon.types[i].type.name %></p>
+        <% } %>
+      </th>
+    </tr>
+  </table>
+
+  <h4 style="text-align: center;"><%= desc.flavor_text_entries[2].flavor_text %></h4>
 </body>
 
 </html>

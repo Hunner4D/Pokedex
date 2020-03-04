@@ -7,13 +7,19 @@ a {
   color: #00B7FF;
 }
 
-.pokemon-screen {
+.pokemon-screen-text {
   display: block;
   text-align: center;
 }
 
-#pokedex-full{
+.pokedex-full{
   display: flex;
   flex-wrap: wrap;
   text-align: center;
+}
+
+button {
+  background: transparent;
+  border: none !important;
+  font-size:0;
 }

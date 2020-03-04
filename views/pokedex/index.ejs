@@ -19,8 +19,11 @@
   <div>
     <nav>
       <div class="nav-wrapper">
-        <a href="" class="brand-logo left">Pokedex</a>
+        <a href="/" class="brand-logo left">Pokedex</a>
         <ul class="right">
+          <li>
+            <a href=""><i class="material-icons left"></i>My Pokemon</a>
+          </li>
           <li>
             <% if(user && user.name){ %>
             <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
@@ -41,13 +44,20 @@
     </div>
   </form>
 
-  <div id="pokedex-full">
+  <div class="pokedex-full">
       <% for (let i = 0; i < allmon.length; i++) { %>
       <div style="width: 33%;">
-        <img src="<%= allmon[i].sprites.front_default %>" alt="Pokemon Photo" height="200px" width="200px">
-        <a class="pokemon-screen" href="/search?pokesearch=<%= allmon[i].name %>"><%= allmon[i].name %></a>
+        <a href="/search?pokesearch=<%= allmon[i].name %>"><img src="<%= allmon[i].sprites.front_default %>" alt="Pokemon Photo" height="200px" width="200px"></a>
+        <a class="pokemon-screen-text" href="/search?pokesearch=<%= allmon[i].name %>">#<%= allmon[i].id %>: <%= allmon[i].name %></a>
       </div>
       <% } %>
+
+      <div style="width: 33%;">
+        <form action="/search" method="GET">
+          <button name="pokesearch" value="<%= rn %>"><img src="https://i.imgur.com/i3f0Th9.jpg" alt="Mystery Pokemon" height="100px" width="137px" style="margin-top: 70px;"></button>
+        </form>
+        <h6>And 700+ More!</h6>
+      </div>
   </div>
 
 </body>

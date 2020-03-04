@@ -11,12 +11,13 @@ let allmon = [];
 router.get('/', function(req, res) {
   const { user } = req;
   const promises = [];
+  let rn = Math.floor((Math.random() * 801) + 1);
   for (let i = 1; i <= 151; i ++) {
     promises.push(pokemon.getPokemon(i));
   }
   Promise.all(promises).then(results => {
     allmon = results;
-    return res.render('pokedex/index', { user, allmon });
+    return res.render('pokedex/index', { user, allmon, rn });
   });
 });
 

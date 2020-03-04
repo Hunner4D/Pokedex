@@ -17,10 +17,10 @@
   <div>
     <nav>
       <div class="nav-wrapper">
-        <a href="" class="brand-logo left">Pokedex</a>
+        <a href="/" class="brand-logo left">Pokedex</a>
         <ul class="right">
           <li>
-            <a href="/"><i class="material-icons left"></i>Home Screen</a>
+            <a href=""><i class="material-icons left"></i>My Pokemon</a>
           </li>
         </ul>
       </div>
@@ -34,9 +34,14 @@
     </div>
   </form>
 
-  <div class="pokemon-screen">
+  <div class="pokemon-screen-text">
       <h2 style="margin-bottom: 0;">#<%= mon.id %>: <%= mon.name %></h1>
-    <img src="<%= mon.sprites.front_default %>" alt="Pokemon Photo" height="500" width="500"> 
+    <img src="<%= mon.sprites.front_default %>" alt="Pokemon Photo" height="300" width="300"> 
+  </div>
+
+  <div class="pokedex-full">
+    <a href="/search?pokesearch=<%= mon.id - 1 %>" style="width: 50%;" class="pokemon-screen-text">Previous Pokemon</a>
+    <a href="/search?pokesearch=<%= mon.id + 1 %>" style="width: 50%;" class="pokemon-screen-text">Next Pokemon</a>
   </div>
 
 </body>

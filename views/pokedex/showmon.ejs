@@ -47,7 +47,7 @@
 
   <table>
     <tr>
-      <th style="text-align: center;" style="padding: 0;">
+      <th style="text-align: center;"">
       <% for (let i = 0; i < mon.types.length; i++) {  %>
         <p>Type: <%= mon.types[i].type.name %></p>
         <% } %>
@@ -55,7 +55,7 @@
     </tr>
   </table>
 
-  <h4 style="text-align: center;"><%= desc.flavor_text_entries[2].flavor_text %></h4>
+  <p style="text-align: center; padding: 0 60vmin;"><%= engArr[0].flavor_text %></p>
 </body>
 
 </html>

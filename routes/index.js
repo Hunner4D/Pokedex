@@ -48,7 +48,8 @@ router.get('/search', async function(req, res) {
   mon = await pokemon.getPokemon('pokemon/'+ searchedMon);
   console.log(mon);
   desc = await pokemon.getPokemon('pokemon-species/'+ searchedMon)
-  res.render('pokedex/showmon', { mon, desc });
+  let engArr = desc.flavor_text_entries.filter(obj => obj.language.name == "en");
+  res.render('pokedex/showmon', { mon, desc, engArr });
 });
 
 

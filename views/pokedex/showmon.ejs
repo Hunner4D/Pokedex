@@ -20,7 +20,7 @@
         <a href="/" class="brand-logo left">Pokedex</a>
         <ul class="right">
           <li>
-            <a href=""><i class="material-icons left"></i>My Pokemon</a>
+            <a href="/mypokemon"><i class="material-icons left"></i>My Pokemon</a>
           </li>
         </ul>
       </div>
@@ -51,11 +51,18 @@
       <% for (let i = 0; i < mon.types.length; i++) {  %>
         <p>Type: <%= mon.types[i].type.name %></p>
         <% } %>
+        <form action="/pokemon" method="POST">
+          <input name="name" type="hidden" value="<%= mon.name %>">
+          <input name="number" type="hidden" value="<%= mon.id %>">
+          <input name="image" type="hidden" value="<%= mon.sprites.front_default %>">
+          <input type="submit" value="add to list">
+        </form>
       </th>
     </tr>
   </table>
 
-  <p style="text-align: center; padding: 0 60vmin;"><%= engArr[0].flavor_text %></p>
+  <h6 style="text-align: center;"><%= engArrTitle[0].genus %></h6>
+  <p style="text-align: center; padding: 0 60vmin;"><%= engArrDesc[0].flavor_text %></p>
 </body>
 
 </html>

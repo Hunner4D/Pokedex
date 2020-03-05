@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pokedex Hunter</title>
+    <!-- Google Icon Fonts used by Materialize -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Materialize CSS Framework -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="stylesheets/style.css" />
+    <!-- JavaScript for Materialize -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
+<body>
+
+    <div>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="/" class="brand-logo left">Pokedex</a>
+                <ul class="right">
+                    <li>
+                        <a href="/"><i class="material-icons left"></i>Home</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <form action="/search" method="GET">
+        <div style="text-align: center;">
+            <input type="text" name="pokesearch" autocomplete="off" placeholder="Search for a Pokemon"
+                style="text-transform: lowercase;">
+            <button class="btn btn-success" style="margin: 0 auto;" type="submit">Go!</button>
+        </div>
+    </form>
+
+    <div class="pokedex-full">
+        <% pokemon.forEach(p => { %>
+        <div style="width: 33%;">
+            <a href="/search?pokesearch=<%= p.name %>"><img src="<%= p.image %>" alt="Pokemon Photo" height="200px" width="200px"></a>
+            <a href="/search?pokesearch=<%= p.name %>" style="margin-bottom: 0em;"><h6 style="text-align: center; margin: 0em;"><%= p.name %></h6></a>
+            
+            <form action="/pokemon/<%= p._id %>?_method=DELETE" method="POST">
+                <button type="submit"><h6 style="font-size: small; font-weight: bolder;">Delete</h6></button>
+            </form>
+        </div>
+        <% }) %>
+    </div>
+
+
+</body>
+
+</html>

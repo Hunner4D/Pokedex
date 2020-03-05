@@ -1,6 +1,14 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #DEEFE7;
+}
+
+nav {
+  background-color: #EF5350!important;
+}
+
+#searchbar {
+  margin-left: 10%;
 }
 
 a {
@@ -22,4 +30,41 @@ button {
   background: transparent;
   border: none !important;
   font-size:0;
+}
+
+.btn-primary {
+  background-color: #deefe7;
+  background-repeat:no-repeat;
+  border-radius: 1em;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;  
+  height: 200px;
+  width: 200px;
+  margin-bottom: 50px;
+}
+
+.btn-primary:hover {
+  background-color: #EF5350;
+}
+
+.btn-success:hover {
+  background-color: #395FA4;
+}
+
+#pokedex-title {
+  color: #FDC937;
+  text-shadow: -1px 1px 2px #395FA4,
+  1px 1px 2px #395FA4,
+  1px -1px 0 #395FA4,
+  -1px -1px 0 #395FA4;
+}
+
+#pokedex-title:hover {
+  text-decoration: none !important;
+  color: #395FA4;
+  text-shadow: -1px 1px 2px #FDC937,
+  1px 1px 2px #FDC937,
+  1px -1px 0 #FDC937,
+  -1px -1px 0 #FDC937;
 }

@@ -1,9 +1,8 @@
 var express = require('express');
 var passport = require('passport');
 var router = express.Router();
-var initializeTrainerRoutes = require('../controllers/trainers.js');
 var pokemon = require('../api/pokemon');
-
+var User = require('../models/pokemonDB');
 let mon;
 let allmon = [];
 
@@ -19,6 +18,17 @@ router.get('/', function(req, res) {
     allmon = results;
     return res.render('pokedex/index', { user, allmon, rn });
   });
+});
+
+router.get('/mypokemon', function(req, res) {
+  User.findById(req.user._id, function(e, user){
+    let pokes = user.pokemon 
+    res.render('pokedex/mypokemon', {
+      user: req.user,
+      pokemon: pokes
+    });
+  
+  })
 });
 
 
@@ -48,8 +58,9 @@ router.get('/search', async function(req, res) {
   mon = await pokemon.getPokemon('pokemon/'+ searchedMon);
   console.log(mon);
   desc = await pokemon.getPokemon('pokemon-species/'+ searchedMon)
-  let engArr = desc.flavor_text_entries.filter(obj => obj.language.name == "en");
-  res.render('pokedex/showmon', { mon, desc, engArr });
+  let engArrDesc = desc.flavor_text_entries.filter(obj => obj.language.name == "en");
+  let engArrTitle = desc.genera.filter(obj => obj.language.name == "en");
+  res.render('pokedex/showmon', { mon, desc, engArrDesc, engArrTitle });
 });
 
 

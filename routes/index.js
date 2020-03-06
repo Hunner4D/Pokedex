@@ -6,17 +6,21 @@ var User = require('../models/pokemonDB');
 let mon;
 let allmon = [];
 
+function randomNum() {
+  let rn = Math.floor((Math.random() * 801) + 1);
+  return rn
+}
+
 /* GET home page. */
 router.get('/', function (req, res) {
   const { user } = req;
   const promises = [];
-  let rn = Math.floor((Math.random() * 801) + 1);
   for (let i = 1; i <= 800; i++) {
     promises.push(pokemon.getPokemon('pokemon/' + i));
   }
   Promise.all(promises).then(results => {
     allmon = results;
-    return res.render('pokedex/index', { user, allmon, rn });
+    return res.render('pokedex/index', { user, allmon, rn: randomNum() });
   });
 });
 

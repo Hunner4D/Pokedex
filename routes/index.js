@@ -131,7 +131,14 @@ router.get('/search', async function (req, res) {
   desc = await pokemon.getPokemon('pokemon-species/' + searchedMon)
   let engArrDesc = desc.flavor_text_entries.filter(obj => obj.language.name == "en");
   let engArrTitle = desc.genera.filter(obj => obj.language.name == "en");
-  res.render('pokedex/showmon', { mon, desc, engArrDesc, engArrTitle, user: req.user });
+  let userLoggedId;
+  if (req.user === undefined) {
+    userLoggedId = "target";
+  }
+  else {
+    userLoggedId = "no-target";
+  }
+  res.render('pokedex/showmon', { mon, desc, engArrDesc, engArrTitle, user: req.user, userLoggedId });
 });
 
 // Stuff below added for google oauth

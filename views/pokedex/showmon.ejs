@@ -14,7 +14,7 @@
 
 <body>
   <div>
-    <nav style="margin-bottom: 20px;">
+    <nav>
       <div class="nav-wrapper" id="sticky-header">
         <a href="/" class="brand-logo left" id="pokedex-title">Pokedex</a>
         <ul class="right">
@@ -32,11 +32,21 @@
       </div>
     </nav>
 
+<div class="pokedex-full">
+    <a href="/kanto" class="region-nav">Kanto</a>
+    <a href="/johto" class="region-nav">Johto</a>
+    <a href="/hoenn" class="region-nav">Hoenn</a>
+    <a href="/sinnoh" class="region-nav">Sinnoh</a>
+    <a href="/unova" class="region-nav">Unova</a>
+    <a href="/kalos" class="region-nav">Kalos</a>
+    <a href="/alola" class="region-nav">Alola</a>
+  </div>
+
     <form action="/search" method="GET">
       <div class="pokedex-full" id="searchbar">
         <input type="text" name="pokesearch" autocomplete="off" placeholder="Search for a Pokemon"
           style="text-transform: lowercase; width: 80%;">
-        <button class="btn btn-success" style="width: 10%; margin-bottom: 80px;" type="submit">Go!</button>
+        <button class="btn btn-success" style="width: 10%; margin-bottom: 60px;" type="submit">Go!</button>
       </div>
     </form>
   </div>
@@ -48,7 +58,7 @@
 
   <div class="pokedex-full">
     <a href="/search?pokesearch=<%= mon.id - 1 %>" class="next-prev">Previous Pokemon</a>
-    <form id="target" action="/pokemon" method="POST" style="width: 33%; margin-bottom: 10px;">
+    <form id="<%= userLoggedId %>" action="/pokemon" method="POST" style="width: 33%; margin-bottom: 10px;">
       <input name="name" type="hidden" value="<%= mon.name %>">
       <input name="number" type="hidden" value="<%= mon.id %>">
       <input name="image" type="hidden" value="<%= mon.sprites.front_default %>">
@@ -73,11 +83,9 @@
     document.addEventListener("DOMContentLoaded", function (event) {
       const form = document.getElementById('target');
       form.onsubmit = () => {
-        alert("Sorry! You must be signed in to create a list.");
+          alert("You must be signed in to create a list.");
       }
     });
-
-
   </script>
 
 </body>

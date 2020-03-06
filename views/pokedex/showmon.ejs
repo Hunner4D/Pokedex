@@ -13,27 +13,33 @@
 </head>
 
 <body>
-
   <div>
-    <nav>
-      <div class="nav-wrapper">
-        <a href="/" class="brand-logo left">Pokedex</a>
+    <nav style="margin-bottom: 20px;">
+      <div class="nav-wrapper" id="sticky-header">
+        <a href="/" class="brand-logo left" id="pokedex-title">Pokedex</a>
         <ul class="right">
           <li>
             <a href="/mypokemon"><i class="material-icons left"></i>My Pokemon</a>
           </li>
+          <li>
+            <% if(user && user.name){ %>
+            <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
+            <% } else{ %>
+            <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
+            <% } %>
+          </li>
         </ul>
       </div>
     </nav>
-  </div>
 
-  <form action="/search" method="GET">
-    <div style="text-align: center;">
-      <input type="text" name="pokesearch" autocomplete="off" placeholder="Search for a Pokemon"
-        style="text-transform: lowercase;">
-      <button class="btn btn-success" style="margin: 0 auto;" type="submit">Go!</button>
-    </div>
-  </form>
+    <form action="/search" method="GET">
+      <div class="pokedex-full" id="searchbar">
+        <input type="text" name="pokesearch" autocomplete="off" placeholder="Search for a Pokemon"
+          style="text-transform: lowercase; width: 80%;">
+        <button class="btn btn-success" style="width: 10%; margin-bottom: 80px;" type="submit">Go!</button>
+      </div>
+    </form>
+  </div>
 
   <div class="pokemon-screen-text">
     <h2 style="margin-bottom: 0;">#<%= mon.id %>: <%= mon.name %></h1>
@@ -51,18 +57,31 @@
       <% for (let i = 0; i < mon.types.length; i++) {  %>
         <p>Type: <%= mon.types[i].type.name %></p>
         <% } %>
-        <form action="/pokemon" method="POST">
-          <input name="name" type="hidden" value="<%= mon.name %>">
-          <input name="number" type="hidden" value="<%= mon.id %>">
-          <input name="image" type="hidden" value="<%= mon.sprites.front_default %>">
-          <input type="submit" value="add to list">
+        <form id="target" action="/pokemon" method="POST">
+        <input name="name" type="hidden" value="<%= mon.name %>">
+        <input name="number" type="hidden" value="<%= mon.id %>">
+        <input name="image" type="hidden" value="<%= mon.sprites.front_default %>">
+        <input type="submit" value="add to list">
         </form>
       </th>
     </tr>
-  </table>
-
+  </table> 
+  
   <h6 style="text-align: center;"><%= engArrTitle[0].genus %></h6>
   <p style="text-align: center; padding: 0 60vmin;"><%= engArrDesc[0].flavor_text %></p>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function(event) { 
+      const form = document.getElementById('target');
+      form.onsubmit = () => {
+        alert("Sorry! You must be signed in to create a list.");
+      }
+    });
+
+    
+  </script>
+
 </body>
+
 
 </html>

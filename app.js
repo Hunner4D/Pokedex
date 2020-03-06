@@ -18,6 +18,7 @@ require('./config/passport');
 
 var indexRouter = require('./routes/index');
 var pokemonRouter = require('./routes/pokemon');
+var commentRouter = require('./routes/comment');
 
 
 // view engine setup
@@ -40,6 +41,7 @@ app.use(methodOverride('_method'));
 
 app.use('/', indexRouter);
 app.use('/pokemon', pokemonRouter);
+app.use('/comment', commentRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

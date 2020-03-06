@@ -6,13 +6,18 @@ module.exports = {
 }
 
 function add(req, res) {
-    User.findById(req.user._id, function(err, user) {
-        console.log('USER: ' + user)
-        user.pokemon.push(req.body);
-        user.save(function(e) {
-            res.redirect('/mypokemon', )
+    if (req.user) {
+        User.findById(req.user._id, function(err, user) {
+            console.log('USER: ' + user)
+            user.pokemon.push(req.body);
+            user.save(function(e) {
+                res.redirect('/mypokemon', )
+            })
         })
-    })
+    }
+    else {
+        res.redirect(`back`);
+    }
 }
 
 function delMon(req, res) {

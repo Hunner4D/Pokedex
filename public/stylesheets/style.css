@@ -11,6 +11,24 @@ nav {
   margin-left: 10%;
 }
 
+.region-nav {
+  width: 14.2%;
+  margin-bottom: 10px;
+  color: #395FA4;
+  background-color: #FFF;
+  font-weight: 500;
+  font-style: italic;
+  border: 5px solid #EF5350;
+  border-style: groove;
+  font-size: medium;
+}
+
+.region-nav:hover {
+  color: #EF5350;
+  background-color: rgb(243, 211, 124);
+  text-decoration: none;
+}
+
 a {
   color: #00B7FF;
 }

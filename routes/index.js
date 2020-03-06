@@ -11,11 +11,25 @@ function randomNum() {
   return rn
 }
 
+//-------------------------------------------------------------------
 /* GET home page. */
 router.get('/', function (req, res) {
   const { user } = req;
   const promises = [];
-  for (let i = 1; i <= 800; i++) {
+  const page = 2;
+  for (let i = 1; i <= 151; i++) {
+    promises.push(pokemon.getPokemon('pokemon/' + i));
+  }
+  Promise.all(promises).then(results => {
+    allmon = results;
+    return res.render('pokedex/index', { user, allmon, rn: randomNum(), page });
+  });
+});
+
+router.get('/kanto', function (req, res) {
+  const { user } = req;
+  const promises = [];
+  for (let i = 1; i <= 151; i++) {
     promises.push(pokemon.getPokemon('pokemon/' + i));
   }
   Promise.all(promises).then(results => {
@@ -24,6 +38,78 @@ router.get('/', function (req, res) {
   });
 });
 
+router.get('/johto', function (req, res) {
+  const { user } = req;
+  const promises = [];
+  for (let i = 152; i <= 251; i++) {
+    promises.push(pokemon.getPokemon('pokemon/' + i));
+  }
+  Promise.all(promises).then(results => {
+    allmon = results;
+    return res.render('pokedex/index', { user, allmon, rn: randomNum() });
+  });
+});
+
+router.get('/hoenn', function (req, res) {
+  const { user } = req;
+  const promises = [];
+  for (let i = 252; i <= 386; i++) {
+    promises.push(pokemon.getPokemon('pokemon/' + i));
+  }
+  Promise.all(promises).then(results => {
+    allmon = results;
+    return res.render('pokedex/index', { user, allmon, rn: randomNum() });
+  });
+});
+
+router.get('/sinnoh', function (req, res) {
+  const { user } = req;
+  const promises = [];
+  for (let i = 387; i <= 493; i++) {
+    promises.push(pokemon.getPokemon('pokemon/' + i));
+  }
+  Promise.all(promises).then(results => {
+    allmon = results;
+    return res.render('pokedex/index', { user, allmon, rn: randomNum() });
+  });
+});
+
+router.get('/unova', function (req, res) {
+  const { user } = req;
+  const promises = [];
+  for (let i = 494; i <= 649; i++) {
+    promises.push(pokemon.getPokemon('pokemon/' + i));
+  }
+  Promise.all(promises).then(results => {
+    allmon = results;
+    return res.render('pokedex/index', { user, allmon, rn: randomNum() });
+  });
+});
+
+router.get('/kalos', function (req, res) {
+  const { user } = req;
+  const promises = [];
+  for (let i = 650; i <= 721; i++) {
+    promises.push(pokemon.getPokemon('pokemon/' + i));
+  }
+  Promise.all(promises).then(results => {
+    allmon = results;
+    return res.render('pokedex/index', { user, allmon, rn: randomNum() });
+  });
+});
+
+router.get('/alola', function (req, res) {
+  const { user } = req;
+  const promises = [];
+  for (let i = 722; i <= 807; i++) {
+    promises.push(pokemon.getPokemon('pokemon/' + i));
+  }
+  Promise.all(promises).then(results => {
+    allmon = results;
+    return res.render('pokedex/index', { user, allmon, rn: randomNum() });
+  });
+});
+//---------------------------------------------------------------------------
 router.get('/mypokemon', function (req, res) {
   if (req.user) {
     User.findById(req.user._id, function (e, user) {

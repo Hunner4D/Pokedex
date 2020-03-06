@@ -16,7 +16,7 @@
 
 <body>
   <div>
-    <nav style="margin-bottom: 20px;">
+    <nav>
       <div class="nav-wrapper" id="sticky-header">
         <a href="/" class="brand-logo left" id="pokedex-title">Pokedex</a>
         <ul class="right">
@@ -34,11 +34,21 @@
       </div>
     </nav>
 
+<div class="pokedex-full">
+    <a href="/kanto" class="region-nav">Kanto</a>
+    <a href="/johto" class="region-nav">Johto</a>
+    <a href="/hoenn" class="region-nav">Hoenn</a>
+    <a href="/sinnoh" class="region-nav">Sinnoh</a>
+    <a href="/unova" class="region-nav">Unova</a>
+    <a href="/kalos" class="region-nav">Kalos</a>
+    <a href="/alola" class="region-nav">Alola</a>
+  </div>
+
     <form action="/search" method="GET">
       <div class="pokedex-full" id="searchbar">
         <input type="text" name="pokesearch" autocomplete="off" placeholder="Search for a Pokemon"
           style="text-transform: lowercase; width: 80%;">
-        <button class="btn btn-success" style="width: 10%; margin-bottom: 80px;" type="submit">Go!</button>
+        <button class="btn btn-success" style="width: 10%; margin-bottom: 100px;" type="submit">Go!</button>
       </div>
     </form>
   </div>

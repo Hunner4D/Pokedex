@@ -21,6 +21,7 @@ nav {
   border: 5px solid #EF5350;
   border-style: groove;
   font-size: medium;
+  text-align: center;
 }
 
 .region-nav:hover {
@@ -36,6 +37,18 @@ a {
 .pokemon-screen-text {
   display: block;
   text-align: center;
+}
+
+.next-prev {
+  display: block;
+  text-align: center;
+  width: 33%;
+  color: #EF5350;
+  font-weight: 600;
+}
+
+.next-prev:hover {
+  text-decoration: underline;
 }
 
 .pokedex-full{
@@ -86,3 +99,4 @@ button {
   1px -1px 0 #FDC937,
   -1px -1px 0 #FDC937;
 }
+

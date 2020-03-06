@@ -47,38 +47,37 @@
   </div>
 
   <div class="pokedex-full">
-    <a href="/search?pokesearch=<%= mon.id - 1 %>" style="width: 50%;" class="pokemon-screen-text">Previous Pokemon</a>
-    <a href="/search?pokesearch=<%= mon.id + 1 %>" style="width: 50%;" class="pokemon-screen-text">Next Pokemon</a>
+    <a href="/search?pokesearch=<%= mon.id - 1 %>" class="next-prev">Previous Pokemon</a>
+    <form id="target" action="/pokemon" method="POST" style="width: 33%; margin-bottom: 10px;">
+      <input name="name" type="hidden" value="<%= mon.name %>">
+      <input name="number" type="hidden" value="<%= mon.id %>">
+      <input name="image" type="hidden" value="<%= mon.sprites.front_default %>">
+      <input type="submit" value="add to list">
+    </form>
+    <a href="/search?pokesearch=<%= mon.id + 1 %>" class="next-prev">Next Pokemon</a>
   </div>
 
-  <table>
-    <tr>
-      <th style="text-align: center;"">
+  <hr style="margin-bottom: 30px;">
+
+  <div id=" mon-description">
+    <h6 style="text-align: center; font-style: italic; font-weight: 900;"><%= engArrTitle[0].genus %></h6>
+    <div class="pokedex-full">
       <% for (let i = 0; i < mon.types.length; i++) {  %>
-        <p>Type: <%= mon.types[i].type.name %></p>
-        <% } %>
-        <form id="target" action="/pokemon" method="POST">
-        <input name="name" type="hidden" value="<%= mon.name %>">
-        <input name="number" type="hidden" value="<%= mon.id %>">
-        <input name="image" type="hidden" value="<%= mon.sprites.front_default %>">
-        <input type="submit" value="add to list">
-        </form>
-      </th>
-    </tr>
-  </table> 
-  
-  <h6 style="text-align: center;"><%= engArrTitle[0].genus %></h6>
-  <p style="text-align: center; padding: 0 60vmin;"><%= engArrDesc[0].flavor_text %></p>
+      <p style="width: <%= 100 / mon.types.length %>%; font-weight: 900;">Type: <%= mon.types[i].type.name %></p>
+      <% } %>
+    </div>
+    <p style="text-align: center; padding: 0 60vmin;"><%= engArrDesc[0].flavor_text %></p>
+  </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function(event) { 
+    document.addEventListener("DOMContentLoaded", function (event) {
       const form = document.getElementById('target');
       form.onsubmit = () => {
         alert("Sorry! You must be signed in to create a list.");
       }
     });
 
-    
+
   </script>
 
 </body>

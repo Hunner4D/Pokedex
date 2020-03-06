@@ -11,7 +11,7 @@ router.get('/', function (req, res) {
   const { user } = req;
   const promises = [];
   let rn = Math.floor((Math.random() * 801) + 1);
-  for (let i = 1; i <= 800; i++) {
+  for (let i = 1; i <= 151; i++) {
     promises.push(pokemon.getPokemon('pokemon/' + i));
   }
   Promise.all(promises).then(results => {

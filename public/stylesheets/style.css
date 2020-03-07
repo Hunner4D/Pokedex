@@ -83,6 +83,10 @@ button {
   background-color: #395FA4;
 }
 
+.btn-success {
+  display: inline;
+}
+
 #pokedex-title {
   color: #FDC937;
   text-shadow: -1px 1px 2px #395FA4,

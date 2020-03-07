@@ -2,86 +2,86 @@
 <html>
 
 <head>
-    <title>Pokedex Hunter</title>
-    <!-- Google Icon Fonts used by Materialize -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Materialize CSS Framework -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="stylesheets/style.css" />
-    <!-- JavaScript for Materialize -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <title>Pokedex Hunter</title>
+  <!-- Google Icon Fonts used by Materialize -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Materialize CSS Framework -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="stylesheets/style.css" />
+  <!-- JavaScript for Materialize -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 
 <body>
-    <div>
-        <nav>
-          <div class="nav-wrapper" id="sticky-header">
-            <a href="/" class="brand-logo left" id="pokedex-title">Pokedex</a>
-            <ul class="right">
-              <li>
-                <a href="/mypokemon"><i class="material-icons left"></i>My Pokemon</a>
-              </li>
-              <li>
-                <% if(user && user.name){ %>
-                <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
-                <% } else{ %>
-                <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
-                <% } %>
-              </li>
-            </ul>
-          </div>
-        </nav>
-    
-    <div class="pokedex-full">
-        <a href="/kanto" class="region-nav">Kanto</a>
-        <a href="/johto" class="region-nav">Johto</a>
-        <a href="/hoenn" class="region-nav">Hoenn</a>
-        <a href="/sinnoh" class="region-nav">Sinnoh</a>
-        <a href="/unova" class="region-nav">Unova</a>
-        <a href="/kalos" class="region-nav">Kalos</a>
-        <a href="/alola" class="region-nav">Alola</a>
-      </div>
-    
-        <form action="/search" method="GET">
-          <div class="pokedex-full" id="searchbar">
-            <input type="text" name="pokesearch" autocomplete="off" placeholder="Search for a Pokemon"
-              style="text-transform: lowercase; width: 80%;">
-            <button class="btn btn-success" style="width: 10%; margin-bottom: 100px;" type="submit">Go!</button>
-          </div>
-        </form>
-      </div>
-
-
-    <div class="pokedex-full">
-        <% pokemon.forEach(p => { %>
-        <div style="width: 33%;">
-            <a href="/search?pokesearch=<%= p.name %>"><img src="<%= p.image %>" alt="Pokemon Photo" height="200px"
-                    width="200px"></a>
-            <a href="/search?pokesearch=<%= p.name %>" style="margin-bottom: 0em;">
-                <h6 style="text-align: center; margin: 0em;"><%= p.name %></h6>
-            </a>
-
-            <form action="/pokemon/<%= p._id %>?_method=DELETE" method="POST">
-                <button type="submit">
-                    <h6 style="font-size: small; font-weight: bolder;">Delete</h6>
-                </button>
-            </form>
-
-            <form action="/comment/<%= p._id %>" method="POST">
-                <input type="text" name="comment" autocomplete="off" placeholder="Comment" style="width: 20%;">
-                <button class="btn btn-success" style="width: 10%; text-align: center;" type="submit">✓</button>
-            </form>
-
-            <% for(let i=0; i < p.comments.length; i++) { %>
-            <form action="/comment/<%= p._id %>/<%= p.comments[i]._id %>?_method=DELETE" method="POST">
-                <h6><%= p.comments[i] && p.comments[i].comment %></h6>
-                <button class="btn btn-success" style="width: 10%; text-align: center;" type="X">X</button>
-            </form>
+  <div>
+    <nav>
+      <div class="nav-wrapper" id="sticky-header">
+        <a href="/" class="brand-logo left" id="pokedex-title">Pokedex</a>
+        <ul class="right">
+          <li>
+            <a href="/mypokemon"><i class="material-icons left"></i>My Pokemon</a>
+          </li>
+          <li>
+            <% if(user && user.name){ %>
+            <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
+            <% } else{ %>
+            <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
             <% } %>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-        </div>
-        <% }) %>
+    <div class="pokedex-full">
+      <a href="/kanto" class="region-nav">Kanto</a>
+      <a href="/johto" class="region-nav">Johto</a>
+      <a href="/hoenn" class="region-nav">Hoenn</a>
+      <a href="/sinnoh" class="region-nav">Sinnoh</a>
+      <a href="/unova" class="region-nav">Unova</a>
+      <a href="/kalos" class="region-nav">Kalos</a>
+      <a href="/alola" class="region-nav">Alola</a>
     </div>
+
+    <form action="/search" method="GET">
+      <div class="pokedex-full" id="searchbar">
+        <input type="text" name="pokesearch" autocomplete="off" placeholder="Search for a Pokemon"
+          style="text-transform: lowercase; width: 80%;">
+        <button class="btn btn-success" style="width: 10%; margin-bottom: 100px;" type="submit">Go!</button>
+      </div>
+    </form>
+  </div>
+
+
+  <div class="pokedex-full">
+    <% pokemon.forEach(p => { %>
+    <div style="width: 33%;">
+      <a href="/search?pokesearch=<%= p.name %>"><img src="<%= p.image %>" alt="Pokemon Photo" height="200px"
+          width="200px"></a>
+      <a href="/search?pokesearch=<%= p.name %>" style="margin-bottom: 0em;">
+        <h6 style="text-align: center; margin: 0em;"><%= p.name %></h6>
+      </a>
+
+      <form action="/pokemon/<%= p._id %>?_method=DELETE" method="POST">
+        <button type="submit">
+          <h6 style="font-size: small; font-weight: bolder;">Delete</h6>
+        </button>
+      </form>
+
+      <form action="/comment/<%= p._id %>" method="POST">
+        <input type="text" name="comment" autocomplete="off" placeholder="Comment" style="width: 20%;">
+        <button class="btn btn-success" style="width: 10%; text-align: center;" type="submit">✓</button>
+      </form>
+
+      <% for(let i=0; i < p.comments.length; i++) { %>
+      <form action="/comment/<%= p._id %>/<%= p.comments[i]._id %>?_method=DELETE" method="POST">
+          <h6><%= p.comments[i] && p.comments[i].comment %>  <button class="btn btn-success">X</button></h6>
+          
+      </form>
+      <% } %>
+
+    </div>
+    <% }) %>
+  </div>
 </body>
 
 </html>

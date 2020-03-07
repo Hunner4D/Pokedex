@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <div>
+  <div id="overlay">
     <nav>
       <div class="nav-wrapper" id="sticky-header">
         <a href="/" class="brand-logo left" id="pokedex-title">Pokedex</a>
@@ -32,15 +32,15 @@
       </div>
     </nav>
 
-<div class="pokedex-full">
-    <a href="/kanto" class="region-nav">Kanto</a>
-    <a href="/johto" class="region-nav">Johto</a>
-    <a href="/hoenn" class="region-nav">Hoenn</a>
-    <a href="/sinnoh" class="region-nav">Sinnoh</a>
-    <a href="/unova" class="region-nav">Unova</a>
-    <a href="/kalos" class="region-nav">Kalos</a>
-    <a href="/alola" class="region-nav">Alola</a>
-  </div>
+    <div class="pokedex-full">
+      <a href="/kanto" class="region-nav">Kanto</a>
+      <a href="/johto" class="region-nav">Johto</a>
+      <a href="/hoenn" class="region-nav">Hoenn</a>
+      <a href="/sinnoh" class="region-nav">Sinnoh</a>
+      <a href="/unova" class="region-nav">Unova</a>
+      <a href="/kalos" class="region-nav">Kalos</a>
+      <a href="/alola" class="region-nav">Alola</a>
+    </div>
 
     <form action="/search" method="GET">
       <div class="pokedex-full" id="searchbar">
@@ -83,7 +83,7 @@
     document.addEventListener("DOMContentLoaded", function (event) {
       const form = document.getElementById('target');
       form.onsubmit = () => {
-          alert("You must be signed in to create a list.");
+        alert("You must be signed in to create a list.");
       }
     });
   </script>

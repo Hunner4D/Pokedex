@@ -125,3 +125,12 @@ button {
 #scrollpoke {
   margin-top: 200px;
 }
+
+@media only screen and (max-width: 800px) {
+  #mon-description {
+    font-size: large;
+  }
+  #mon-description p {
+    padding: 0 !important; 
+  }
+}

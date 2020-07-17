@@ -127,7 +127,12 @@ router.get('/mypokemon', function (req, res) {
 
 router.get('/search', async function (req, res) {
   const searchedMon = req.query.pokesearch;
-  mon = await pokemon.getPokemon('pokemon/' + searchedMon);
+  try {
+    mon = await pokemon.getPokemon('pokemon/' + searchedMon);
+  }
+  catch(err) {
+    res.redirect(`back`)
+  }
   desc = await pokemon.getPokemon('pokemon-species/' + searchedMon)
   let engArrDesc = desc.flavor_text_entries.filter(obj => obj.language.name == "en");
   let engArrTitle = desc.genera.filter(obj => obj.language.name == "en");
